@@ -1,4 +1,4 @@
-using Json.Fluently.Builders.Abstract;
+﻿using Json.Fluently.Builders.Abstract;
 using Json.Fluently.Syntax;
 using Newtonsoft.Json.Linq;
 using System;
@@ -19,9 +19,9 @@ namespace Json.Fluently.Builders
 
     private class JsonArraySyntax : IJsonArraySyntax
     {
-      private JArray _jArray;
+      private readonly JArray _jArray;
 
-      private IFluentJsonBuilder _builder;
+      private readonly IFluentJsonBuilder _builder;
 
       public JsonArraySyntax(JArray jArray, IFluentJsonBuilder builder)
       {
@@ -37,7 +37,7 @@ namespace Json.Fluently.Builders
         return this;
       }
 
-      public IJsonArrayBuilder WithItems(Func<IFluentJsonBuilder, IJsonObjectBuilder[]> arraySyntaxFunc)
+      public IJsonArrayBuilder WithItems(Func<IFluentJsonBuilder, IJsonObjectSyntax[]> arraySyntaxFunc)
       {
         var items = arraySyntaxFunc(_builder).Select(c => c.Build());
 

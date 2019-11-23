@@ -1,4 +1,4 @@
-using Json.Fluently.Builders.Abstract;
+﻿using Json.Fluently.Builders.Abstract;
 using Json.Fluently.Syntax;
 using Newtonsoft.Json.Linq;
 using System;
@@ -16,11 +16,11 @@ namespace Json.Fluently.Builders
       return new JsonObjectSyntax(_jObject, builder);
     }
 
-    private class JsonObjectSyntax : IJsonObjectSyntax, IJsonObjectBuilder
+    private class JsonObjectSyntax : IJsonObjectSyntax
     {
-      private JObject _jObject;
+      private readonly JObject _jObject;
 
-      private IFluentJsonBuilder _builder;
+      private readonly IFluentJsonBuilder _builder;
 
       public JsonObjectSyntax(JObject jObject, IFluentJsonBuilder builder)
       {
@@ -63,12 +63,9 @@ namespace Json.Fluently.Builders
         return this;
       }
 
-      public IJsonObjectSyntax WithObject(string objectName,
-        Func<IJsonObjectSyntax, IJsonObjectBuilder> objectSyntaxFunc)
+      public IJsonObjectSyntax WithObject(string objectName, Func<IFluentJsonBuilder, IJsonObjectBuilder> objectSyntaxFunc)
       {
-        var objectSyntax = new JsonObjectBuilder().CreateNew(_builder);
-
-        var syntax = objectSyntaxFunc(objectSyntax);
+        var syntax = objectSyntaxFunc(_builder);
 
         _jObject.Add(objectName, syntax.Build());
 

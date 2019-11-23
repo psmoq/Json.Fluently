@@ -1,4 +1,4 @@
-using Json.Fluently.Builders.Abstract;
+﻿using Json.Fluently.Builders.Abstract;
 using Newtonsoft.Json.Linq;
 using System;
 
@@ -16,7 +16,7 @@ namespace Json.Fluently.Syntax
 
     IJsonObjectSyntax WithArray(string arrayName, JArray jArray);
 
-    IJsonObjectSyntax WithObject(string objectName, Func<IJsonObjectSyntax, IJsonObjectBuilder> objectSyntaxFunc);
+    IJsonObjectSyntax WithObject(string objectName, Func<IFluentJsonBuilder, IJsonObjectBuilder> objectSyntaxFunc);
 
     IJsonObjectSyntax WithArray(string arrayName, Func<IJsonArraySyntax, IJsonArrayBuilder> arraySyntaxFunc);
   }

@@ -1,4 +1,4 @@
-using Json.Fluently.Builders.Abstract;
+﻿using Json.Fluently.Builders.Abstract;
 using Newtonsoft.Json.Linq;
 using System;
 
