@@ -1,13 +1,13 @@
-﻿using JsonFluently.Builders.Abstract;
+using Json.Fluently.Builders.Abstract;
 using Newtonsoft.Json.Linq;
 using System;
 
-namespace JsonFluently.Syntax
+namespace Json.Fluently.Syntax
 {
   public interface IJsonArraySyntax : IJsonArrayBuilder
   {
     IJsonArrayBuilder WithItems(JObject[] items);
 
-    IJsonArrayBuilder WithItems(Func<IFluentJsonBuilder, IJsonObjectBuilder[]> arraySyntaxFunc);
+    IJsonArrayBuilder WithItems(Func<IFluentJsonBuilder, IJsonObjectSyntax[]> arraySyntaxFunc);
   }
 }

@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json.Linq;
 
-namespace JsonFluently.Builders.Abstract
+namespace Json.Fluently.Builders.Abstract
 {
   public interface IJsonArrayBuilder
   {

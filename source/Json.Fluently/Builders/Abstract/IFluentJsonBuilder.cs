@@ -1,6 +1,6 @@
-﻿using JsonFluently.Syntax;
+﻿using Json.Fluently.Syntax;
 
-namespace JsonFluently.Builders.Abstract
+namespace Json.Fluently.Builders.Abstract
 {
   public interface IFluentJsonBuilder
   {

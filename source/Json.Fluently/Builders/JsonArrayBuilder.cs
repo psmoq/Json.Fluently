@@ -1,10 +1,10 @@
-﻿using JsonFluently.Builders.Abstract;
-using JsonFluently.Syntax;
+using Json.Fluently.Builders.Abstract;
+using Json.Fluently.Syntax;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Linq;
 
-namespace JsonFluently.Builders
+namespace Json.Fluently.Builders
 {
   public class JsonArrayBuilder
   {

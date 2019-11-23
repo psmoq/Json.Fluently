@@ -1,8 +1,8 @@
-﻿using JsonFluently.Builders.Abstract;
+using Json.Fluently.Builders.Abstract;
 using Newtonsoft.Json.Linq;
 using System;
 
-namespace JsonFluently.Syntax
+namespace Json.Fluently.Syntax
 {
   public interface IJsonObjectSyntax : IJsonObjectBuilder
   {
