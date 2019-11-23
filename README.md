@@ -6,33 +6,56 @@
 
 Example car JSON representation:
 
-	var car = builder.CreateNew()
-        .WithProperty("name", "Audi")
-        .WithProperty("doorCount", 4)
-        .WithObject("engine",
-          objBuilder =>
-          {
-            return objBuilder
-              .WithProperty("capacity", (decimal)2.0)
-              .WithProperty("fuel", "diesel")
-              .WithProperty("horsePower", 150);
-          })
-        .WithArray("wheels", arrBuilder =>
+    var builder = new FluentJsonBuilder();
+    var car = builder.CreateNew()
+      .WithProperty("name", "Audi")
+      .WithProperty("doorCount", 4)
+      .WithObject("engine",
+        jsonBuilder => jsonBuilder.CreateNew()
+          .WithProperty("capacity", (decimal) 2.0)
+          .WithProperty("fuel", "diesel")
+          .WithProperty("horsePower", 150))
+      .WithArray("wheels", 
+        array => array.WithItems(jsonBuilder => new[]
+      {
+        jsonBuilder.CreateNew()
+          .WithProperty("position", "front-left"),
+        jsonBuilder.CreateNew()
+          .WithProperty("position", "front-right"),
+        jsonBuilder.CreateNew()
+          .WithProperty("position", "rear-left"),
+        jsonBuilder.CreateNew()
+          .WithProperty("position", "rear-right")
+          .WithProperty("isFlat", true)
+      }))
+      .Build();
+
+The result of above code will be following:
+
+    {
+      "name": "Audi",
+      "doorCount": 4.0,
+      "engine": {
+        "capacity": 2.0,
+        "fuel": "diesel",
+        "horsePower": 150.0
+      },
+      "wheels": [
         {
-          return arrBuilder.WithItems(objectBuilder => new[]
-          {
-            objectBuilder.CreateNew()
-              .WithProperty("position", "front-left"),
-            objectBuilder.CreateNew()
-              .WithProperty("position", "front-right"),
-            objectBuilder.CreateNew()
-              .WithProperty("position", "rear-left"),
-            objectBuilder.CreateNew()
-              .WithProperty("position", "rear-right")
-              .WithProperty("isFlat", true)
-          });
-        })
-        .Build();
+          "position": "front-left"
+        },
+        {
+          "position": "front-right"
+        },
+        {
+          "position": "rear-left"
+        },
+        {
+          "position": "rear-right",
+          "isFlat": true
+        }
+      ]
+    } 
 
 ## License
 
