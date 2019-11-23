@@ -1,7 +1,5 @@
 # Json.Fluently
 
-## Description
-
 **Json.Fluently** is a very simple JSON object builder written in C# (.NET Standard) using fluent design approach. It is built on top of **Newtonsoft.Json** library. This library makes JSON object creation easier and more human-readable.
 
 ## Usage
